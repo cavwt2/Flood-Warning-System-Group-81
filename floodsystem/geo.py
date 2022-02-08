@@ -6,21 +6,26 @@ geographical data.
 
 """
 
-from floodsystem.utils import sorted_by_key  # noqa
-from haversine import haversine
-(x,y) = (52.2053, 0.1218)
+from .utils import sorted_by_key  # noqa
+from haversine import haversine, Unit
 
 def stations_by_distance(stations,p):
-   """define the tuple for p"""
-   p = (x,y)
-   """define empty list for the new list of tuples"""
+   """lists stations by distance from p"""
    station_list = []
-   for i in stations["items"]:
-       """creates a list of tuples each containing town name, station name and distance from p"""
-       q = [i["town"],i["Station name"],haversine(i["coordinate"],p)]
+   for i in stations:
+       #creates a list of tuples each containing town name, station name and distance from p
+       q =(i,haversine(i.coord,p, unit=Unit.KILOMETERS))
        station_list.append(q)
-       """sorts the list by distance from p"""
-       return sorted_by_key(q,2)
+       #sorts the list by distance from p
+   return sorted_by_key(station_list,1)
 
-
-    
+def stations_within_radius(stations, centre, r):
+    """lists stations within radius r of centre x"""
+    station_radius = []
+    for i in stations:
+    #creates a list of tuples each containing town name, station name and distance from the centre
+        radius = haversine(i.coord,centre, unit=Unit.KILOMETERS)
+        q =(i,radius)
+        if radius < r:
+            station_radius.append(q)
+    return sorted_by_key(station_radius,1)
