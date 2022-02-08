@@ -1,6 +1,8 @@
 from turtle import distance
 from floodsystem.geo import stations_within_radius
+from floodsystem.geo import stations_by_distance
 from floodsystem.stationdata import build_station_list
+from floodsystem.station import MonitoringStation
 
 """10 closest stations to Cambridge City Centre"""
 def run():
@@ -8,7 +10,7 @@ def run():
     stations = build_station_list()
     centre = (52.2053, 0.1218)
     r = 10
-    list_of_stations =[(station.name) for (station) in stations_within_radius(stations,centre,r)]
+    list_of_stations =[station.name for station in stations_within_radius(stations, centre, r)]
     sortedstations = list_of_stations.sort()
     print("Stations within a radius of 10km")
     print(sortedstations)
