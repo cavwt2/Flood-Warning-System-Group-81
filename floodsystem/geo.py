@@ -7,8 +7,6 @@ geographical data.
 """
 
 from .utils import sorted_by_key  # noqa
-from .import datafetcher
-from .station import MonitoringStation
 from haversine import haversine,unit
 (x,y) = (52.2053, 0.1218)
 
@@ -19,6 +17,7 @@ def stations_by_distance(stations,p):
    for i in stations["items"]:
        q = [i["town"],i["Station name"],haversine(i["coordinate"],p)]
        station_list.append(q)
+       return sorted_by_key(q,2)
 
 
     
