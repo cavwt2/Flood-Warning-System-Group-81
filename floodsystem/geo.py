@@ -6,7 +6,7 @@ geographical data.
 
 """
 
-from utils import sorted_by_key  # noqa
+from floodsystem.utils import sorted_by_key  # noqa
 from haversine import haversine
 (x,y) = (52.2053, 0.1218)
 
