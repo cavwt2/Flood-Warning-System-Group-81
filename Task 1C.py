@@ -10,7 +10,7 @@ def run():
     stations = build_station_list()
     centre = (52.2053, 0.1218)
     r = 10
-    list_of_stations =[station.name for station in stations_within_radius(stations, centre, r)]
+    list_of_stations =[station.name for (station,radius) in stations_within_radius(stations, centre, r)]
     sortedstations = list_of_stations.sort()
     print("Stations within a radius of 10km")
     print(sortedstations)
