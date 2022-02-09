@@ -49,3 +49,37 @@ def stations_by_river(stations):
             else:
                 river_dict[station.river] = [station.name]
     return river_dict
+
+def rivers_by_station_number(stations,N):
+    '''Prints the N rivers with the greatest number of monitoring stations'''
+    river_dict = dict()
+    mylist = list()
+
+    for station in stations:
+        if station.river != None:
+            if station.river in river_dict:
+                river_dict[station.river] +=1
+            else:
+                river_dict[station.river] = 1
+
+    for i in river_dict.keys():
+        mylist.append((i,river_dict[i]))
+    
+    mylist = sorted_by_key(mylist,1)
+    final_list = list()
+    for i in range(N):
+        final_list.append(mylist[-1*(i+1)])
+        if i == N-1:
+            num = i+1
+            while True:
+                if mylist[-1*(num+1)][1] == mylist[-1*num][1]:
+                    final_list.append(mylist[-1*(num+1)])
+                    num +=1
+
+                else:
+                    break
+
+   
+    return final_list
+
+
