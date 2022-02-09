@@ -29,3 +29,23 @@ def stations_within_radius(stations, centre, r):
         if radius < r:
             station_radius.append(q)
     return station_radius
+
+def rivers_with_station(stations):
+    '''Creates a list of river names'''
+    river_names = set()
+    for station in stations:
+        if station.river != None:
+            river_names.add(station.river)
+    return river_names
+
+def stations_by_river(stations):
+    '''Creates a dictionary which maps river name to station name'''
+    river_dict = dict()
+    for station in stations:
+        if station.river != None:
+            if station.river in river_dict:
+                river_dict[station.river].append(station.name)
+                river_dict[station.river].sort()
+            else:
+                river_dict[station.river] = [station.name]
+    return river_dict
