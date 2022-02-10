@@ -11,6 +11,8 @@ def run():
     centre = (52.2053, 0.1218)
     r = 10
     list_of_stations =[station.name for (station,radius) in stations_within_radius(stations, centre, r)]
+    for (station,radius) in stations_within_radius(stations,centre,r):
+        assert radius <= r
     list_of_stations.sort()
     print("Stations within a radius of 10km")
     print(list_of_stations)

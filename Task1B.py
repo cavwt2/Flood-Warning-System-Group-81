@@ -10,6 +10,8 @@ def run():
 
     close =[(station.name, station.town, distance) for (station, distance) in station_distances[:10]]
     far = [(station.name, station.town, distance) for (station, distance) in station_distances[-10:]]
+    for (station,distance) in station_distances[:10]:
+        assert type(distance) == float
     print("10 closest stations")
     print(close)
     print("10 furthest stations")
