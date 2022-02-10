@@ -11,9 +11,9 @@ def run():
     centre = (52.2053, 0.1218)
     r = 10
     list_of_stations =[station.name for (station,radius) in stations_within_radius(stations, centre, r)]
-    sortedstations = list_of_stations.sort()
+    list_of_stations.sort()
     print("Stations within a radius of 10km")
-    print(sortedstations)
+    print(list_of_stations)
 
 if __name__ == "__main__":
     print("*** Task 1A: CUED Part IC Flood Warning System ***")
