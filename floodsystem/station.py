@@ -47,6 +47,21 @@ class MonitoringStation:
             return False
         return True
 
+    def relative_water_level(self):
+        '''Provides a relative water level compared to typical range, 1.0 if exactly at high value, 0 if at low value'''
+        if self.typical_range == None:
+            return None
+        low_value = self.typical_range[0]
+        high_value = self.typical_range[1]
+
+        if self.latest_level == None:
+            return None
+        '''elif self.latest_level > high_value:
+            return None
+        elif self.latest_level < low_value:
+            return None'''
+        return (self.latest_level - low_value)/(high_value - low_value)
+
 
 def inconsistent_typical_range_stations(stations):
     '''Makes a list of stations with invalid typical range values'''
