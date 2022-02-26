@@ -1,4 +1,3 @@
-from .datafetcher import fetch_measure_levels
 import matplotlib
 import numpy as np
 def polyfit(dates,levels,p):
