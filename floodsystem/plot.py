@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from analysis import polyfit
+from .analysis import polyfit
 import numpy as np
 
 def plot_water_levels(station,dates,levels):
