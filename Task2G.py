@@ -24,15 +24,15 @@ def run():
 
         dt = 2
         dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
-        for levels in (dates,levels):
-            if levels == []:
-                print('No level data')
-            elif levels[0]>levels[-1]:
-                print('Water level rising')
-            elif levels[0]<levels[-1]:
-                print('Water level falling')
-            elif levels[0]==levels[-1]:
-                print('Water level stable')
+
+        if levels == []:
+            print('No level data')
+        elif levels[0]>levels[-1]:
+            print('Water level rising')
+        elif levels[0]<levels[-1]:
+            print('Water level falling')
+        elif levels[0]==levels[-1]:
+            print('Water level stable')
 
 
 if __name__ == "__main__":
