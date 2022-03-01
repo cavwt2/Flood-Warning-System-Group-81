@@ -16,8 +16,8 @@ def run():
         dt = 2
         dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=dt))
         p=4
-        polyfit(stations,dates,p)
-        plot_water_level_with_fit(station,dates,levels)
+        if dates != []:
+            plot_water_level_with_fit(stations,dates,levels,p)
     
     low_values = [station.typical_range[0] for _ in range(len(dates))]
     plt.plot(dates,low_values,label = "Typical low value")
@@ -27,5 +27,5 @@ def run():
         
 
 if __name__ == "__main__":
-    print("*** Task 2E: CUED Part IB Flood Warning System ***")
+    print("*** Task 2F: CUED Part IB Flood Warning System ***")
     run()
