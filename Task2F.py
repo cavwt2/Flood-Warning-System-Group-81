@@ -18,14 +18,7 @@ def run():
         p=4
         if dates != []:
             plot_water_level_with_fit(station,dates,levels,p)
-    
-    low_values = [station.typical_range[0] for _ in range(len(dates))]
-    plt.plot(dates,low_values,label = "Typical low value")
-
-    high_values = [station.typical_range[1] for _ in range(len(dates))]
-    plt.plot(dates,high_values,label = "Typical high value")
         
-
 if __name__ == "__main__":
     print("*** Task 2F: CUED Part IB Flood Warning System ***")
     run()
