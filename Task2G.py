@@ -31,7 +31,7 @@ def run():
                 print('Water level rising')
             elif levels[0]<levels[-1]:
                 print('Water level falling')
-            elif levels[0]==levels[-1]:
+            else:
                 print('Water level stable')
 
 

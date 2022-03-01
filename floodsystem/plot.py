@@ -22,7 +22,7 @@ def plot_water_levels(station,dates,levels):
     plt.tight_layout()
     plt.show()
 
-def plot_water_level_with_fit(station, dates, levels, p):
+def plot_water_level_with_fit(station,dates,levels,p):
     """Plots the water level data and the best fit polynomial"""
 
     (poly,d0) = polyfit(dates,levels,p)
