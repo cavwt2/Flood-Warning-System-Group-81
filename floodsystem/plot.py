@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.dates
 from .analysis import polyfit
 import numpy as np
 import matplotlib
@@ -28,7 +29,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
     (poly,d0) = polyfit(dates,levels,p)
     x = matplotlib.dates.date2num(dates)
 
-    plt.plot(x, levels,label = f'Station {station.name}')
+    plt.plot(x,levels,label = f'Station {station.name}')
     x1 = np.linspace(x[0], x[-1], 30)
     plt.plot(x1, poly(x1 - x[0]))
 
