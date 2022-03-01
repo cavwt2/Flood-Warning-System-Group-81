@@ -4,7 +4,7 @@ import floodsystem.flood as flood
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.analysis import polyfit
 from floodsystem.plot import plot_water_level_with_fit
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 def run():
     stations = build_station_list()
@@ -17,7 +17,7 @@ def run():
         dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=dt))
         p=4
         if dates != []:
-            plot_water_level_with_fit(stations,dates,levels,p)
+            plot_water_level_with_fit(station,dates,levels,p)
     
     low_values = [station.typical_range[0] for _ in range(len(dates))]
     plt.plot(dates,low_values,label = "Typical low value")

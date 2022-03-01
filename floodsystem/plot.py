@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from .analysis import polyfit
 import numpy as np
+import matplotlib
 
 def plot_water_levels(station,dates,levels):
     '''plots water level data against time including lines for typical low and high levels'''
@@ -25,7 +26,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
     """Plots the water level data and the best fit polynomial"""
 
     (poly,d0) = polyfit(dates,levels,p)
-    x = plt.dates.date2num(dates)
+    x = matplotlib.dates.date2num(dates)
 
     plt.plot(x, levels,label = f'Station {station.name}')
     x1 = np.linspace(x[0], x[-1], 30)
