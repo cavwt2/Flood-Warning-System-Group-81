@@ -1,4 +1,3 @@
-import floodsystem.station as station
 from floodsystem.stationdata import build_station_list, update_water_levels
 import floodsystem.flood as flood
 import datetime
@@ -8,7 +7,7 @@ from floodsystem.datafetcher import fetch_measure_levels
 stations = build_station_list()
 update_water_levels(stations)
 teststation = stations[1]
-teststations = stations[1:10]
+teststations = stations[0:50]
 print(f'Test station current level {teststation.latest_level}')
 print(f'Test station typical range {teststation.typical_range}')
 
@@ -26,7 +25,7 @@ Station name:     Surfleet Sluice
 #Task2B
 print(f'Test station relative water level: {teststation.relative_water_level()}')
 #Task2C
-N=10
+N=5
 list_of_stations_over_tol = flood.stations_highest_rel_level(teststations,N)
 for (station,relwaterlevel) in list_of_stations_over_tol:
     #Added a 10 station threshold can remove
