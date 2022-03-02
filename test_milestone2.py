@@ -1,6 +1,8 @@
 import floodsystem.station as station
 from floodsystem.stationdata import build_station_list, update_water_levels
 import floodsystem.flood as flood
+import datetime
+from floodsystem.datafetcher import fetch_measure_levels
 
 '''creating some sample stations to test functions'''
 stations = build_station_list()
@@ -30,3 +32,28 @@ for (station,relwaterlevel) in list_of_stations_over_tol:
     #Added a 10 station threshold can remove
     print(f"{station.name} {relwaterlevel}")
 
+#Task2G
+for (station,relwaterlevel) in list_of_stations_over_tol:
+   print(f"{station.town} {relwaterlevel}")
+   if relwaterlevel < 0.8:
+      print('Low Risk')
+   elif relwaterlevel>= 10:
+      print('Error in level data')
+   elif relwaterlevel>= 3:
+      print('High Risk')
+   elif relwaterlevel >= 2:
+      print('Severe Risk')
+   elif relwaterlevel >= 0.8:
+      print('Moderate Risk')
+
+   dt = 2
+   dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
+
+   if levels == []:
+      print('No level data')
+   elif levels[0]>levels[-1]:
+      print('Water level rising')
+   elif levels[0]<levels[-1]:
+      print('Water level falling')
+   elif levels[0]==levels[-1]:
+      print('Water level stable')
